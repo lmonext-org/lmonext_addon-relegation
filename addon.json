@@ -1,0 +1,24 @@
+{
+    "name": "relegation",
+    "version": "1.0.1",
+    "type": "standalone",
+    "description": {
+        "de": "Relegations-Addon für Auf-/Abstiegs-Playoffs zwischen Ligen.",
+        "en": "Relegation add-on for promotion/relegation playoffs between leagues."
+    },
+    "author": "Dietmar Kersting, Torsten Hofmann",
+    "license": "GPL-3.0-only",
+    "homepage": "https://github.com/henshingly/lmonext_addon-relegation",
+    "icon": "🔀",
+    "min_core_version": "1.4.0",
+    "dependencies": [],
+    "admin_handlers": [],
+    "admin_views": {},
+    "admin_nav": [],
+    "frontend_handlers": [],
+    "frontend_views": {},
+    "templates_dir": "templates/",
+    "lang_dir": "lang/",
+    "db_tables": [],
+    "hooks": []
+}
