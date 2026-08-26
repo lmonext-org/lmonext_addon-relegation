@@ -2,7 +2,7 @@
 /**
  * Project: LMOnext
  * Filename: addon/relegation/lmo-relegation.php
- * Fileversion: 1.0.1
+ * Fileversion: 1.1.0
  *
  * PHP version 8.2
  *
@@ -62,8 +62,10 @@ declare(strict_types=1);
 
 use LMOnext\Liga\LigaService;
 
-// Wird diese Datei direkt aufgerufen (URL/IFrame) oder per include()?
-$rlIsDirectCall = basename($_SERVER['SCRIPT_NAME'] ?? '') === 'lmo-relegation.php';
+// Wird diese Datei über den zentralen Controller addon-run.php aufgerufen
+// (der einzige noch erlaubte Aufrufweg, siehe addon/.htaccess) oder per
+// include()?
+$rlIsDirectCall = defined('LMO_ADDON_STANDALONE_CALL');
 
 require_once __DIR__ . '/../../frontend/bootstrap.php';
 
@@ -96,6 +98,11 @@ function rlProjectRootUrlPrefix() : string
         return $prefix;
     }
 
+    if (defined('LMO_ADDON_WEB_BASE')) {
+        $prefix = rtrim(dirname(rtrim(LMO_ADDON_WEB_BASE, '/'), 2), '/') . '/';
+        return $prefix;
+    }
+
     $projectRootDisk = rtrim(str_replace('\\', '/', dirname(__DIR__, 2)), '/');
     $scriptFilename  = str_replace('\\', '/', (string)($_SERVER['SCRIPT_FILENAME'] ?? ''));
     $scriptName      = (string)($_SERVER['SCRIPT_NAME'] ?? '');
@@ -109,7 +116,7 @@ function rlProjectRootUrlPrefix() : string
         }
     }
 
-    $isDirectCall = basename($_SERVER['SCRIPT_NAME'] ?? '') === basename(__FILE__);
+    $isDirectCall = defined('LMO_ADDON_STANDALONE_CALL');
     $prefix = $isDirectCall ? '../../' : '';
     return $prefix;
 }

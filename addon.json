@@ -1,7 +1,8 @@
 {
     "name": "relegation",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "type": "standalone",
+    "standalone_entrypoints": ["lmo-relegation.php"],
     "description": {
         "de": "Relegations-Addon für Auf-/Abstiegs-Playoffs zwischen Ligen.",
         "en": "Relegation add-on for promotion/relegation playoffs between leagues."
