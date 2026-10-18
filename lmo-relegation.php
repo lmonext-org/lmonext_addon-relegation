@@ -70,7 +70,7 @@ $rlIsDirectCall = defined('LMO_ADDON_STANDALONE_CALL');
 require_once __DIR__ . '/../../frontend/bootstrap.php';
 
 // Standalone-Addon: eigene Sprachdateien explizit laden, da bootFrontend()
-// nur fuer aktivierte Addons in der addon_registry Sprachen registriert.
+// nur für aktivierte Addons in der addon_registry Sprachen registriert.
 // Bei direktem URL-Aufruf ist nicht garantiert, dass dieses Addon in der
 // Registry als enabled steht.
 if (function_exists('addonManager')) {
@@ -175,7 +175,7 @@ if ($rlIsDirectCall) {
 // ════════════════════════════════════════════════════════════════════════════
 
 /**
- * Laedt das Template, extrahiert die Wiederholungs-Bloecke fuer die
+ * Lädt das Template, extrahiert die Wiederholungs-Blöcke für die
  * Team-Boxen (oben und unten benutzen dasselbe Box-Template).
  */
 function rlLoadTemplate(string $templateName) : array
@@ -186,9 +186,9 @@ function rlLoadTemplate(string $templateName) : array
     }
     $src = (string)file_get_contents($templatePath);
 
-    // Zwei getrennte Wiederholungs-Bloecke: BOX_OBEN (Reihe ueber der Oberliga)
-    // und BOX_UNTEN (Reihe ueber der Unterliga). Beide haben in der Regel
-    // identisches Markup, werden aber unabhaengig extrahiert, damit jede
+    // Zwei getrennte Wiederholungs-Blöcke: BOX_OBEN (Reihe über der Oberliga)
+    // und BOX_UNTEN (Reihe über der Unterliga). Beide haben in der Regel
+    // identisches Markup, werden aber unabhängig extrahiert, damit jede
     // Reihe im Template frei positioniert/gestylt werden kann.
     $boxObenTpl = '';
     if (preg_match('/<!-- BEGIN BOX_OBEN -->(.*?)<!-- END BOX_OBEN -->/s', $src, $m)) {
@@ -227,7 +227,7 @@ function rlGetLigaName(int $ligaId) : string
 
 /**
  * Berechnet die aktuelle Tabelle einer Liga (letzter gespielter Spieltag).
- * Gibt [rows, opts, totalTeams] zurueck. rows = computeStandings()-Ergebnis.
+ * Gibt [rows, opts, totalTeams] zurück. rows = computeStandings()-Ergebnis.
  */
 function rlComputeCurrentStandings(int $ligaId) : array
 {
@@ -243,11 +243,11 @@ function rlComputeCurrentStandings(int $ligaId) : array
 }
 
 /**
- * Rendert die Team-Boxen fuer einen Rangbereich [$fromRank, $toRank] einer
+ * Rendert die Team-Boxen für einen Rangbereich [$fromRank, $toRank] einer
  * Liga. $targetRank ist der eigentliche Relegationsrang (bekommt die
  * spezielle Headerfarbe $highlightColor). $arrowDirection bestimmt die
- * Pfeilrichtung fuer Teams, die laut computeStandingsMarkerColor() in
- * einer Auf-/Abstiegszone liegen ('up' fuer Unterliga, 'down' fuer Oberliga).
+ * Pfeilrichtung für Teams, die laut computeStandingsMarkerColor() in
+ * einer Auf-/Abstiegszone liegen ('up' für Unterliga, 'down' für Oberliga).
  */
 function rlRenderBoxes(
     array $rows,
